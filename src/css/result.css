@@ -1,21 +1,24 @@
 .result-container > .card{
-    margin: 0% auto 0% auto;
+    margin: 1% auto 0% auto;
+    font-size: small;
+    box-shadow: 0 0 3px 0 #131212bd;
 }
+
 .correct{
-    color: white;
-    background-color: lime;
+    color: black;
+    background-color: #17c817;
 }
 
 .wrong{
 
-    color: white;
-    background-color:orangered;
+    color: black;
+    background-color:rgb(226, 68, 68);
 }
 
 .other{
 
-    color: white;
-    background-color:rgb(255, 0, 212);
+    color: black;
+    background-color: rgb(240, 230, 238);
 }
 
 .result-option{
@@ -24,10 +27,10 @@
     margin-top: 2%;
 }
 #op{
-    margin: 2% auto 2% 2%;     
+    margin: 1% auto 1% 1%;     
 }
 #mark{
-    margin: 2% 2% 2% 0%;
+    margin: 1% 1% 1% 0%;
 }
 
 .result-header{

@@ -66,7 +66,11 @@ const QuizTemplate = (props) => {
         }
 
         setNewData(responseQuest)
+        console.log("count",count)
+        if(newData.length - 1 !== count)
         setCount(count + 1)
+
+        
     }
 
     //clear response
@@ -88,14 +92,17 @@ const QuizTemplate = (props) => {
 
 
                     <Card key={count} className="col-sm-9">
-                        <CardHeader>
-                            {dataObj[count].question}
+                        <CardHeader className="quiz-holder-head">
+                            <h4>{dataObj[count].question}</h4>
                         </CardHeader>
 
                         <CardBody className="options-body">
                             {
                                 dataObj[count].optionArray.map((item, i) => {
-                                    return (<CardText key={i} onClick={() => saveResponse(item, i)} className={item.id === dataObj[count].responseId ? "selected-answer" : "options"}> {item.option} </CardText>)
+                                    return (
+                                    <div className={item.id === dataObj[count].responseId ? "sdsd selected-answer" : "sdsd"}>
+                                    <CardText key={i} onClick={() => saveResponse(item, i)} > {item.option} </CardText>
+                                    </div>)
                                 })
                             }
                         </CardBody>
@@ -112,7 +119,7 @@ const QuizTemplate = (props) => {
                     </Card>
 
                     <div className="col-3">
-                        <QuizSideBar data={newData} navigateFromSidebar={navigateFromSidebar}/>
+                        <QuizSideBar data={newData} navigateFromSidebar={navigateFromSidebar} count={count}/>
                     </div>
                 </div>
             </div>
@@ -150,7 +157,7 @@ const QuizTemplate = (props) => {
             history.goForward()
         }
       }, [])
-
+      console.log("countt",count)
     return (
         <>
             <h1>Quiz template</h1>

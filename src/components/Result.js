@@ -64,15 +64,15 @@ const Result = (props) =>{
             <p>Wrong Answers : {wrong}</p>
             <p>Not Answered : {notAnswered}</p>
             <p>Total Question : {props.location.state?.newData.length}</p>
-            <Button><Link to="/home">Home</Link></Button>
+            <Link to="/home"><i className="fa fa-home fa-2x"></i></Link>
         </div>
         <div className="result-container">
         {
             props.location.state?.newData.map((item,i) =>{
                 return(
-                    <Card key={i} className="col-sm-9">
+                    <Card key={i} className="col-sm-9 ">
                         <CardHeader>
-                            {item.question}
+                            <h6>{item.question}</h6>
                         </CardHeader>
 
                         <CardBody className="">

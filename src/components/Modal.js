@@ -2,6 +2,7 @@ import React from 'react';
 import Select from 'react-select';
 import Modal from 'react-modal';
 import {Button, Input} from 'reactstrap';
+import '../css/category.css';
 
 import {Difficulty, Types} from "../constants/categories";
 
@@ -13,8 +14,9 @@ const customStyles = {
       right                 : 'auto',
       bottom                : 'auto',
       marginRight           : '-50%',
-      transform             : 'translate(-50%, -50%)'
-    }
+      transform             : 'translate(-50%, -50%)',
+      
+    },
   };
 
 const ModalComponent = (props) => {
@@ -26,6 +28,7 @@ const ModalComponent = (props) => {
             onRequestClose={props.toggleModal}
             appElement={document.getElementById('root')}
             style={customStyles}
+            
           >
             {
               !props.confirmModal ?
@@ -54,8 +57,8 @@ const ModalComponent = (props) => {
                   
               </div> :
               <div className="modalForm">
-                <span>Are You sure want to submit ?</span>
-
+                <span>Are You sure want to submit?</span>
+                <br/>
                 <Button id="modalInput" color="primary" onClick={props.submitQuiz}>Yes</Button>
               </div>
             }
