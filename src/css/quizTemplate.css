@@ -1,0 +1,55 @@
+.quiz-holder{
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    margin :2% auto 2% auto;
+}
+.options-body > .card-text{
+    background-color: blueviolet;
+    width: 50%;
+    margin :2% auto 2% auto;
+
+}
+
+.options-body > .card-text:hover{
+    background-color: violet;
+
+}
+
+.selected-answer{
+    background-color: lightgreen !important;
+}
+
+.card-footer > .btn{
+    margin: 1%;
+}
+
+.quiz-header-card{
+    display: flex;
+    justify-content: space-between;
+    /* margin :2% auto 2% auto; */
+}
+
+.quiz-header-card > #count{
+    font-size: x-large;
+}
+
+.quiz-header{
+    width: 80%;
+    margin :2% auto 2% auto;
+}
+
+.sidebar-highlight{
+    background-color: lightseagreen;
+    
+}
+
+.sidebar{
+    overflow: scroll;
+    overflow-x: hidden;
+height: 200px;
+}
+
+.tile:hover{
+    cursor: pointer;
+}

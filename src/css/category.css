@@ -1,0 +1,54 @@
+.Category-container{
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+flex-wrap: wrap;
+width: 80%;
+margin: 2% auto 2% auto;
+}
+
+.Category-container > .card{
+    background-color: #2f79f2;
+    height: 100%;
+    box-shadow: 0 0 3px 0 #131212bd;
+    transition: transform 1s;
+}
+
+.Category-container > .card:hover{
+    background-color: #8e24aa;
+    box-shadow: 0 0 8px 0 #131212bd;
+    -ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Safari 3-8 */
+    transform: scale(1.5);
+}
+
+.Category-card{
+    margin: 2%;
+    
+    text-align: center;
+    font-size: larger;
+    font-weight: bolder; 
+}   
+
+
+.Category-card > p{
+    color: white;
+    
+}
+
+.modalForm {
+    text-align: center;
+    
+}
+
+.modalForm > #modalInput{
+    margin-top: 15%;
+    margin-bottom: 15%;
+
+}
+
+select {
+    position: absolute;
+    z-index: 1;
+}
+

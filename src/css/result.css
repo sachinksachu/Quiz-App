@@ -1,0 +1,39 @@
+.result-container > .card{
+    margin: 0% auto 0% auto;
+}
+.correct{
+    color: white;
+    background-color: lime;
+}
+
+.wrong{
+
+    color: white;
+    background-color:orangered;
+}
+
+.other{
+
+    color: white;
+    background-color:rgb(255, 0, 212);
+}
+
+.result-option{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2%;
+}
+#op{
+    margin: 2% auto 2% 2%;     
+}
+#mark{
+    margin: 2% 2% 2% 0%;
+}
+
+.result-header{
+    display: flex;
+justify-content: space-evenly;
+align-items: baseline;
+width: 80%;
+margin: 0% auto 0% auto;
+}
