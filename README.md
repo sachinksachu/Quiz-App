@@ -2,6 +2,11 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# Database Credits
+
+Open Trivia Databse [https://opentdb.com/api_config.php].\
+The Open Trivia Database provides a completely free JSON API for use in programming projects. Use of this API does not require a API Key, just generate the URL below use it in your own application to retrieve trivia questions.
+
 ## Available Scripts
 
 In the project directory, you can run:
