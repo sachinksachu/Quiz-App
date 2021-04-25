@@ -10,15 +10,23 @@
     margin :1.5% auto 1% auto;
     /* border-radius: 15px; */
     color: black;
-    padding: 1%;
+    padding: 0.5%;
 
 }
 
+.sdsd > p{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+h5{
+    color: #6902ff;
+}
 
 
-.quiz-holder-head{
+/* .quiz-holder-head{
     background-color: #f70799b8 !important ;
-}
+} */
 
 .options-body > .sdsd:hover{
     background-color: #1da1f2;
@@ -26,7 +34,7 @@
 }
 
 .selected-answer{
-    background-color: #17c817 !important;
+    background-color: #e340e1 !important;
 }
 
 .card-footer > .btn{
@@ -68,8 +76,17 @@ height: 200px;
     box-shadow: 0 0 1px 0 black;
 }
 
+.sidebar-highlight-wrong{
+    background-color: #e24444;
+}
+
+.sidebar-highlight-answer{
+    background-color: #17c817;
+}
+
 .current{
     background-color: #f94cb5;
+    box-shadow: 0 0 3px 1px rgb(102, 101, 101);
 }
 
 .tile:hover{

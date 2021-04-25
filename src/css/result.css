@@ -23,7 +23,7 @@
 
 .result-option{
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     margin-top: 2%;
 }
 #op{
@@ -32,10 +32,13 @@
 #mark{
     margin: 1% 1% 1% 0%;
 }
+#opt{
+    margin: 0px auto 0px 1%;
+}
 
 .result-header{
     display: flex;
-justify-content: space-evenly;
+justify-content: space-between;
 align-items: baseline;
 width: 80%;
 margin: 0% auto 0% auto;

@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import {withRouter, useHistory} from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Button, Card, CardBody, CardHeader, CardText, CardFooter } from 'reactstrap';
+import ResultHeader from './ResultHeader';
 import QuizHeader from './QuizHeader';
-import QuizSideBar from './QuizSideBar';
+import QuizContainer from './QuizContainer'
 import ModalComponent from "./Modal";
 import '../css/quizTemplate.css';
 
 const QuizTemplate = (props) => {
-
 
     //process array
     const processArray = async () => {
@@ -45,8 +44,9 @@ const QuizTemplate = (props) => {
     }
 
     //save response
-
     const saveResponse = (item, index) => {
+
+        if(!submitted){
 
         let responseQuest = [...newData]
 
@@ -66,103 +66,54 @@ const QuizTemplate = (props) => {
         }
 
         setNewData(responseQuest)
-        console.log("count",count)
         if(newData.length - 1 !== count)
-        setCount(count + 1)
-
+        setCount(count + 1)   
         
+        }
     }
 
     //clear response
-
     const clearResponse = () => {
         let responseQuest = [...newData]
         responseQuest[count].responseId = -1;
         setNewData(responseQuest)
     }
 
-    // Quiz container
-
-    const QuizContainer = () => {
-        let dataObj = [...newData]
-
-        return (
-            <div className="quiz-template">
-                <div className="quiz-holder">
-
-
-                    <Card key={count} className="col-sm-9">
-                        <CardHeader className="quiz-holder-head">
-                            <h4>{dataObj[count].question}</h4>
-                        </CardHeader>
-
-                        <CardBody className="options-body">
-                            {
-                                dataObj[count].optionArray.map((item, i) => {
-                                    return (
-                                    <div className={item.id === dataObj[count].responseId ? "sdsd selected-answer" : "sdsd"}>
-                                    <CardText key={i} onClick={() => saveResponse(item, i)} > {item.option} </CardText>
-                                    </div>)
-                                })
-                            }
-                        </CardBody>
-                        <CardFooter>
-                            {
-                                count !== 0 ? <Button onClick={() => setCount(count - 1)}><i className="fa fa-backward"></i></Button> : null
-                            }
-                            <Button onClick={() => clearResponse()}>Clear response</Button>
-                            {
-                                quest.length - 1 !== count ? <Button onClick={() => setCount(count + 1)}><i className="fa fa-step-forward"></i></Button> : null
-                            }
-                        </CardFooter>
-
-                    </Card>
-
-                    <div className="col-3">
-                        <QuizSideBar data={newData} navigateFromSidebar={navigateFromSidebar} count={count}/>
-                    </div>
-                </div>
-            </div>
-        )
-    }
 
     const [newData, setNewData] = useState([])
     const [quest] = useState(props.location.state?.data)
     const [showModal, setShowModal] = useState(false)
+    const [count, setCount] = useState(0)
+    const [submitted, setSubmitted] = useState(false)
+    let history = useHistory();
 
     useEffect(() => {
         processArray()
-    }, [])
-
-    const [count, setCount] = useState(0)
-    let history = useHistory();
-    // console.log("history", history)
+        return () => { // returned function will be called on component unmount
+            history.goForward()
+        }
+    }, []) 
+    
     const toggleModal = () => {
         setShowModal(!showModal)
     }
 
     const submitQuiz = () => {
         setShowModal(!showModal)
-        history.push({ pathname: '/result', state: { newData } });
+        setSubmitted(true)
+        setCount(0)
+        // history.push({ pathname: '/result', state: { newData } });
     }
 
-    const navigateFromSidebar = (questionNumber) => {
-        setCount(questionNumber)
-    }
-
-    useEffect(() => {
-      
-        // returned function will be called on component unmount 
-        return () => {
-            history.goForward()
-        }
-      }, [])
-      console.log("countt",count)
     return (
         <>
-            <h1>Quiz template</h1>
-            <QuizHeader toggleModal={toggleModal} count={count} total={quest.length}/>
-            {newData.length > 0 ? <QuizContainer /> : null}
+            {submitted ?
+            <ResultHeader toggleModal={toggleModal} count={count} total={quest.length} newData={newData}/>:
+            <QuizHeader toggleModal={toggleModal} count={count} total={quest.length} newData={newData}/>
+            }
+            {newData.length > 0 ? <QuizContainer newData={newData} count={count}
+            saveResponse={saveResponse} clearResponse={clearResponse} setCount={setCount} submitted={submitted}
+            /> : null}
 
             <ModalComponent showModal={showModal} toggleModal={toggleModal} confirmModal={true} submitQuiz={submitQuiz}/>
         </>

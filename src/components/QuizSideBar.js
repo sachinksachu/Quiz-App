@@ -2,16 +2,27 @@ import React from 'react';
 import { Card, CardBody } from 'reactstrap';
 import '../css/quizTemplate.css';
 
-const QuizSideBar = ({data, navigateFromSidebar, count}) =>{
+const QuizSideBar = ({data, navigateFromSidebar, count, submitted}) =>{
 
-    function getClassName(id,index){
-        if(id !== -1){
-            return "sidebar-highlight"
-        }
-        else if(count === index){
+    function getClassName(item,index){
+        if(count === index){
             return "current"
         }
-        else{
+        
+        if(item.responseId !== -1 && !submitted){
+            return "sidebar-highlight"
+        }
+
+        if(item.responseId !== -1 && submitted && item.correct){
+            return "sidebar-highlight-answer"
+        }
+
+
+        if(item.responseId !== -1 && submitted && !item.correct){
+            return "sidebar-highlight-wrong"
+        }
+
+        if(item.responseId === -1){
             return "sidebar-normal"
         }
     }
@@ -23,7 +34,7 @@ const QuizSideBar = ({data, navigateFromSidebar, count}) =>{
                     data.map((item,i) =>{
                         return(
                             <div className="col-3 tile" onClick={() => navigateFromSidebar(i)} key={i}>
-                            <p className={getClassName(item.responseId,i)}>{i+1}</p>
+                            <p className={getClassName(item,i)}>{i+1}</p>
                         </div>
                         )
                         

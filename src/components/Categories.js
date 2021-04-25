@@ -43,7 +43,7 @@ const Categories = () => {
 
     useEffect(() => {
         dispatch(fetchQuizAndOptions(fields, categoryId))
-    }, [redirect, categoryId, dispatch, fields])
+    }, [categoryId])
 
     const Category = () => {
         return (
