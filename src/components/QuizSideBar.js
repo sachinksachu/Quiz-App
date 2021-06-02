@@ -5,26 +5,30 @@ import '../css/quizTemplate.css';
 const QuizSideBar = ({data, navigateFromSidebar, count, submitted}) =>{
 
     function getClassName(item,index){
-        if(count === index){
-            return "current"
-        }
-        
-        if(item.responseId !== -1 && !submitted){
-            return "sidebar-highlight"
-        }
+        let result = "";
 
-        if(item.responseId !== -1 && submitted && item.correct){
-            return "sidebar-highlight-answer"
-        }
+        switch (true) {
+            case count === index:
+                result = "current"
+                break;
 
+            case item.responseId !== -1 && !submitted:
+                result = "sidebar-highlight"
+                break;
 
-        if(item.responseId !== -1 && submitted && !item.correct){
-            return "sidebar-highlight-wrong"
-        }
+            case item.responseId !== -1 && submitted && item.correct:
+                result = "sidebar-highlight-answer"
+                break;
 
-        if(item.responseId === -1){
-            return "sidebar-normal"
+            case item.responseId !== -1 && submitted && !item.correct:
+                result = "sidebar-highlight-wrong"
+                break;
+
+            default:
+                result = "sidebar-normal"
+
         }
+        return result;
     }
 
     return(

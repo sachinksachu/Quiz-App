@@ -43,6 +43,7 @@ const Categories = () => {
 
     useEffect(() => {
         dispatch(fetchQuizAndOptions(fields, categoryId))
+        console.log("klkl");
     }, [categoryId])
 
     const Category = () => {

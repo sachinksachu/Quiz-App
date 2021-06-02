@@ -120,16 +120,5 @@ const QuizTemplate = (props) => {
     )
 }
 
-QuizTemplate.propTypes = {
-    data: PropTypes.arrayOf(PropTypes.shape({
-        category: PropTypes.string,
-        type: PropTypes.string,
-        difficulty: PropTypes.string,
-        question: PropTypes.string,
-        correct_answer: PropTypes.number,
-        incorrect_answers: PropTypes.array
-
-    }))
-};
 
 export default withRouter(QuizTemplate);
